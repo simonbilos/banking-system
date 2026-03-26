@@ -10,6 +10,13 @@ public class Customer {
     private String dateOfBirth;
     private String phoneNumber;
 
+    public Customer(String customerId, String firstName, String surname, String dateofBirth) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.dateOfBirth = dateofBirth;
+    }
+
     public void updatePhoneNumber(String newPhoneNumber) {
         if (checkPhoneNumber(newPhoneNumber)) {
             this.phoneNumber = newPhoneNumber;
