@@ -6,7 +6,7 @@ public class Account {
     private String surname;
     private String dateOfBirth;
     private String phoneNumber;
-    private int balance;
+    private double balance;
 
     public Account(String id,String firstName, String surname, String dateOfBirth, String phoneNumber) {
         this.accountNumber = id;
@@ -17,7 +17,7 @@ public class Account {
         this.balance = 0;
     }
 
-    public String getFirtstName() {
+    public String firstName() {
         return firstName;
     }
 
@@ -33,19 +33,26 @@ public class Account {
         return phoneNumber;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
+    }
+
+    public String getAccountNumber() {
+        return this.accountNumber;
     }
 
     public String getAccountInformation() {
         return "Account " + accountNumber + " is maintained under the name: " + firstName + " " + surname;
     }
 
-    public void deposit(int balance) {
-        this.balance = balance;
+    public void deposit(double balance) {
+        this.balance += balance;
     }
 
-    public int withdraw(int withdrawAmount) {
+    public double withdraw(double withdrawAmount) {
+        if (withdrawAmount < 0) {
+            throw new IllegalArgumentException("Only positive amount can be withdrawn");
+        }
         if (this.balance < withdrawAmount) {
             throw new IllegalStateException("Not enough balance on an account!");
         }
